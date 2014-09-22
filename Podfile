@@ -4,6 +4,8 @@
 target "Simple Yelp Client" do
 pod 'AFNetworking'
 pod 'BDBOAuth1Manager'
+pod 'SVProgressHUD', :head
+
 end
 
 target "Simple Yelp ClientTests" do

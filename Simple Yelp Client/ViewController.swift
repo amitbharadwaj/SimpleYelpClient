@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var dataArray: NSArray?
-
+    
     var client: YelpClient!
     
     // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
@@ -28,30 +28,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // TODO: How to add search bar using story board
+        // TODO: Use auto layout on search bar
+        // TODO: put search bar below title
+        
+        let searchBar: UISearchBar = UISearchBar(frame: CGRectMake(10, 0, 300, 44))
+        //self.navigationController?.navigationBar.addSubview(searchBar)
+        self.navigationItem.titleView = searchBar
+        searchBar.delegate = self
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         // Do any additional setup after loading the view, typically from a nib.
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-//             println(response)
-//            println("=============\n")
-            let responseDict = response as Dictionary<String, AnyObject>
-            self.dataArray = responseDict["businesses"] as NSArray?
-            self.tableView.reloadData()
-            //let locationDict = resultArray[0]["location"] as Dictionary<String, AnyObject>
-             // println(locationDict["city"])
-            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println(error)
-        }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO potential null exception
         if (dataArray == nil) {
@@ -65,7 +66,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cellData = dataArray![indexPath.row] as NSDictionary
         cell.nameLabel.text = cellData["name"] as? String
         
+        let posterImageUrl = NSURL(string: cellData["image_url"] as NSString)
+        cell.posterImageView.setImageWithURL(posterImageUrl)
+
+        let ratingImageUrl = NSURL(string: cellData["rating_img_url"] as NSString)
+        cell.starImageView.setImageWithURL(ratingImageUrl)
+
+        
+        
         return cell
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+        
+        let searchStr = searchBar.text
+        client.searchWithTerm(searchStr, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println(response)
+            println("=============\n")
+            let responseDict = response as Dictionary<String, AnyObject>
+            self.dataArray = responseDict["businesses"] as NSArray?
+            self.tableView.reloadData()
+            //let locationDict = resultArray[0]["location"] as Dictionary<String, AnyObject>
+            // println(locationDict["city"])
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
     }
     
 }
