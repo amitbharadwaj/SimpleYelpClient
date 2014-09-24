@@ -20,4 +20,4 @@ Filter page. Unfortunately, not all the filters are supported in the Yelp API.
 
 Gif Walkthrough
 
-![walkthrough](rtgif.gif)
+![walkthrough](sycgif.gif)
