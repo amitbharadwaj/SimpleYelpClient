@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281DC63219D0FE6800943CFF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DC63119D0FE6800943CFF /* FilterViewController.swift */; };
 		2875AFE119CD8707000BAF46 /* YelpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875AFE019CD8707000BAF46 /* YelpCell.swift */; };
 		28A81FA119CD676500FCB1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A81FA019CD676500FCB1C2 /* AppDelegate.swift */; };
 		28A81FA319CD676500FCB1C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A81FA219CD676500FCB1C2 /* ViewController.swift */; };
@@ -15,6 +16,10 @@
 		28A81FAB19CD676500FCB1C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A81FA919CD676500FCB1C2 /* LaunchScreen.xib */; };
 		28A81FB719CD676500FCB1C2 /* Simple_Yelp_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A81FB619CD676500FCB1C2 /* Simple_Yelp_ClientTests.swift */; };
 		28AAB6F919CD6B3C001AF43D /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AAB6F819CD6B3C001AF43D /* YelpClient.swift */; };
+		28F17CEC19D1598E00FB4D6F /* SortByCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F17CEB19D1598E00FB4D6F /* SortByCell.swift */; };
+		28F17CEE19D2373600FB4D6F /* SearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F17CED19D2373600FB4D6F /* SearchFilters.swift */; };
+		28F17CF219D24B6C00FB4D6F /* RadiusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F17CF119D24B6C00FB4D6F /* RadiusCell.swift */; };
+		28F17CF419D24B8D00FB4D6F /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F17CF319D24B8D00FB4D6F /* DealCell.swift */; };
 		867EC72344B440C589B252F5 /* libPods-Simple Yelp Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F85D6CEA9D4F4014BDF3605A /* libPods-Simple Yelp Client.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281DC63119D0FE6800943CFF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		2875AFE019CD8707000BAF46 /* YelpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpCell.swift; sourceTree = "<group>"; };
 		28A81F9B19CD676500FCB1C2 /* Simple Yelp Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Yelp Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A81F9F19CD676500FCB1C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +48,10 @@
 		28A81FB619CD676500FCB1C2 /* Simple_Yelp_ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_Yelp_ClientTests.swift; sourceTree = "<group>"; };
 		28AAB6F819CD6B3C001AF43D /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		28AAB6FA19CD6B66001AF43D /* Simple Yelp Client-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Yelp Client-Bridging-Header.h"; sourceTree = "<group>"; };
+		28F17CEB19D1598E00FB4D6F /* SortByCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortByCell.swift; sourceTree = "<group>"; };
+		28F17CED19D2373600FB4D6F /* SearchFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilters.swift; sourceTree = "<group>"; };
+		28F17CF119D24B6C00FB4D6F /* RadiusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusCell.swift; sourceTree = "<group>"; };
+		28F17CF319D24B8D00FB4D6F /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		46D16B86E8C24474AA14ECD0 /* Pods-Simple Yelp Client.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Yelp Client.xcconfig"; path = "Pods/Pods-Simple Yelp Client.xcconfig"; sourceTree = "<group>"; };
 		F85D6CEA9D4F4014BDF3605A /* libPods-Simple Yelp Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Simple Yelp Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,12 +101,17 @@
 				28A81FA019CD676500FCB1C2 /* AppDelegate.swift */,
 				28AAB6FD19CD6B96001AF43D /* API */,
 				28A81FA219CD676500FCB1C2 /* ViewController.swift */,
+				281DC63119D0FE6800943CFF /* FilterViewController.swift */,
+				28F17CEB19D1598E00FB4D6F /* SortByCell.swift */,
 				28A81FA419CD676500FCB1C2 /* Main.storyboard */,
 				28A81FA719CD676500FCB1C2 /* Images.xcassets */,
 				28A81FA919CD676500FCB1C2 /* LaunchScreen.xib */,
 				28A81F9E19CD676500FCB1C2 /* Supporting Files */,
 				28AAB6FA19CD6B66001AF43D /* Simple Yelp Client-Bridging-Header.h */,
 				2875AFE019CD8707000BAF46 /* YelpCell.swift */,
+				28F17CF119D24B6C00FB4D6F /* RadiusCell.swift */,
+				28F17CED19D2373600FB4D6F /* SearchFilters.swift */,
+				28F17CF319D24B8D00FB4D6F /* DealCell.swift */,
 			);
 			path = "Simple Yelp Client";
 			sourceTree = "<group>";
@@ -280,7 +295,12 @@
 				28A81FA319CD676500FCB1C2 /* ViewController.swift in Sources */,
 				28AAB6F919CD6B3C001AF43D /* YelpClient.swift in Sources */,
 				28A81FA119CD676500FCB1C2 /* AppDelegate.swift in Sources */,
+				28F17CF219D24B6C00FB4D6F /* RadiusCell.swift in Sources */,
 				2875AFE119CD8707000BAF46 /* YelpCell.swift in Sources */,
+				28F17CEC19D1598E00FB4D6F /* SortByCell.swift in Sources */,
+				28F17CF419D24B8D00FB4D6F /* DealCell.swift in Sources */,
+				28F17CEE19D2373600FB4D6F /* SearchFilters.swift in Sources */,
+				281DC63219D0FE6800943CFF /* FilterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

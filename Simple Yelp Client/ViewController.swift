@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var dataArray: NSArray?
     
     var client: YelpClient!
+    var searchStr: String = "Indian Restaurant"
     
     // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
     let yelpConsumerKey =  "Csht0nQt0qEhaYKU750zxg" // "vxKwwcR_NMQ7WaEiQBK_CA"
@@ -45,6 +46,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
+        // Default query
+        client.searchWithTerm(searchStr, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            //            println(response)
+            //            println("=============\n")
+            let responseDict = response as Dictionary<String, AnyObject>
+            self.dataArray = responseDict["businesses"] as NSArray?
+            self.tableView.reloadData()
+            //let locationDict = resultArray[0]["location"] as Dictionary<String, AnyObject>
+            // println(locationDict["city"])
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+        
         
     }
     
@@ -68,11 +82,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let posterImageUrl = NSURL(string: cellData["image_url"] as NSString)
         cell.posterImageView.setImageWithURL(posterImageUrl)
-
+        
         let ratingImageUrl = NSURL(string: cellData["rating_img_url"] as NSString)
         cell.starImageView.setImageWithURL(ratingImageUrl)
-
-        
         
         return cell
     }
@@ -80,11 +92,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchBar.endEditing(true)
+        searchStr = searchBar.text
         
-        let searchStr = searchBar.text
         client.searchWithTerm(searchStr, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            println(response)
-            println("=============\n")
+            //            println(response)
+            //            println("=============\n")
             let responseDict = response as Dictionary<String, AnyObject>
             self.dataArray = responseDict["businesses"] as NSArray?
             self.tableView.reloadData()
@@ -93,6 +105,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nvc = segue.destinationViewController as?  UINavigationController //FilterViewController
+        
+        //        if (nvc == nil) {
+        //            println("destination view controller for segue is null")
+        //        } else {
+        //            println("destination view controller is navigation controller and it is not null")
+        //        }
+        
+        let fvc = nvc?.topViewController as FilterViewController
+        
+        fvc.onDataAvailable = {[weak self]
+            (searchFilters: SearchFilters) -> () in
+            if let weakSelf = self {
+                weakSelf.runSearchAgain(searchFilters)
+            }
+        }
+    }
+    
+    func runSearchAgain(searchFilters: SearchFilters) {
+        println(" Filters are \(searchFilters.sortByFilter) , \(searchFilters.radiusFilter), \(searchFilters.dealFilter)")
+        
+        client.searchWithFilters(searchStr, searchFilters: searchFilters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            //            println(response)
+            //            println("=============\n")
+            let responseDict = response as Dictionary<String, AnyObject>
+            self.dataArray = responseDict["businesses"] as NSArray?
+            self.tableView.reloadData()
+            //let locationDict = resultArray[0]["location"] as Dictionary<String, AnyObject>
+            // println(locationDict["city"])
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+        
     }
     
 }
