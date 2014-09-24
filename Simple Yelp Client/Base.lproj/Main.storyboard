@@ -181,8 +181,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mv5-ls-QaZ">
-                                            <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mv5-ls-QaZ">
+                                            <rect key="frame" x="541" y="6" width="51" height="31"/>
                                         </switch>
                                     </subviews>
                                     <constraints>
@@ -192,6 +192,29 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dealSwitch" destination="Mv5-ls-QaZ" id="WBv-b6-bQr"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="vth-Jb-HlV" customClass="CategoryCell" customModule="Simple_Yelp_Client" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vth-Jb-HlV" id="CKT-wi-Mwq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imx-yO-kS4">
+                                            <rect key="frame" x="24" y="12" width="558" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="imx-yO-kS4" firstAttribute="top" secondItem="CKT-wi-Mwq" secondAttribute="topMargin" constant="4" id="77R-jN-cLd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="imx-yO-kS4" secondAttribute="trailing" constant="10" id="Kpb-uT-UZv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="imx-yO-kS4" secondAttribute="bottom" constant="2.5" id="TJw-oW-CC5"/>
+                                        <constraint firstItem="imx-yO-kS4" firstAttribute="leading" secondItem="CKT-wi-Mwq" secondAttribute="leadingMargin" constant="16" id="v0J-tx-B1T"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryLabel" destination="imx-yO-kS4" id="XRL-f7-8tN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

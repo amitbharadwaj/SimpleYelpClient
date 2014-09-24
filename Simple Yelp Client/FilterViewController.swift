@@ -23,7 +23,17 @@ class FilterViewController: UITableViewController {
     // TODO make these strings enum
     var sortByFilters:[String] = ["Distance", "Best Match", "Rating"]
     var radiusFilters:[String] = ["5000", "10000", "20000"]
-
+    var categoryFilters: [[String]] = [
+        ["breakfast_brunch", "Breakfast & Brunch"],
+        ["asianfusion" , " Asian Fusion"],
+        ["newamerican" , "New American"],
+        ["japanese"  , "Japanese"],
+        ["wine_bars" , "Wine Bars"],
+        ["italian"  , "Italian"],
+        ["buffets"  , "Buffets"],
+        ["delis   " , "Delis"],
+        ["sandwiches"  , "Sandwitches"],
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +42,7 @@ class FilterViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3;
+        return 4;
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -43,6 +53,8 @@ class FilterViewController: UITableViewController {
             return "Radius"
         case 2:
             return "Deals"
+        case 3:
+            return "Categories"
         default:
             return ""
         }
@@ -57,6 +69,8 @@ class FilterViewController: UITableViewController {
                 return expanded ? radiusFilters.count: 1
             case 2:
                 return 1
+            case 3:
+                return expanded ? categoryFilters.count: 3
             default:
                 println("Got into default case of numberOfRowsInSection")
                 return 1
@@ -85,6 +99,11 @@ class FilterViewController: UITableViewController {
             var cell = tableView.dequeueReusableCellWithIdentifier("DealCell") as DealCell
             cell.dealSwitch.on = false
             return cell
+        case 3:
+            var cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as CategoryCell
+            cell.categoryLabel.text = categoryFilters[indexPath.row][1]
+            return cell
+
         default:
             println("Default case is cellForRowAtIndexPath")
         }
@@ -106,6 +125,10 @@ class FilterViewController: UITableViewController {
         case 2:
             let cell = tableView.cellForRowAtIndexPath(indexPath) as DealCell
             searchFilters.dealFilter = cell.dealSwitch.on
+        case 2:
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as CategoryCell
+            searchFilters.categoryFilter.append(cell.categoryLabel.text!)
+            // To be implemented
         default:
             println("default section case in didSelectRowAtIndexPath")
         }

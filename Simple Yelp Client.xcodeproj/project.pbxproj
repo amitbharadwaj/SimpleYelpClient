@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		281DC63219D0FE6800943CFF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281DC63119D0FE6800943CFF /* FilterViewController.swift */; };
+		283305BE19D27F960032F86D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283305BD19D27F960032F86D /* CategoryCell.swift */; };
 		2875AFE119CD8707000BAF46 /* YelpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875AFE019CD8707000BAF46 /* YelpCell.swift */; };
 		28A81FA119CD676500FCB1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A81FA019CD676500FCB1C2 /* AppDelegate.swift */; };
 		28A81FA319CD676500FCB1C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A81FA219CD676500FCB1C2 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		281DC63119D0FE6800943CFF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		283305BD19D27F960032F86D /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		2875AFE019CD8707000BAF46 /* YelpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpCell.swift; sourceTree = "<group>"; };
 		28A81F9B19CD676500FCB1C2 /* Simple Yelp Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Yelp Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A81F9F19CD676500FCB1C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				28F17CF119D24B6C00FB4D6F /* RadiusCell.swift */,
 				28F17CED19D2373600FB4D6F /* SearchFilters.swift */,
 				28F17CF319D24B8D00FB4D6F /* DealCell.swift */,
+				283305BD19D27F960032F86D /* CategoryCell.swift */,
 			);
 			path = "Simple Yelp Client";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				28F17CF419D24B8D00FB4D6F /* DealCell.swift in Sources */,
 				28F17CEE19D2373600FB4D6F /* SearchFilters.swift in Sources */,
 				281DC63219D0FE6800943CFF /* FilterViewController.swift in Sources */,
+				283305BE19D27F960032F86D /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
