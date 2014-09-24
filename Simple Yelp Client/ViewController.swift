@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // TODO: Use auto layout on search bar
         // TODO: put search bar below title
         
-        let searchBar: UISearchBar = UISearchBar(frame: CGRectMake(10, 0, 300, 44))
+        let searchBar: UISearchBar = UISearchBar(frame: CGRectMake(0.0, 0.0, 300.0, 44.0))
         //self.navigationController?.navigationBar.addSubview(searchBar)
         self.navigationItem.titleView = searchBar
         searchBar.delegate = self
@@ -42,6 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
         
         // Do any additional setup after loading the view, typically from a nib.
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
@@ -85,6 +86,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let ratingImageUrl = NSURL(string: cellData["rating_img_url"] as NSString)
         cell.starImageView.setImageWithURL(ratingImageUrl)
+        
+        let locationDict = cellData["location"] as NSDictionary
+        let address = locationDict["address"] as [String]
+        let city = locationDict["city"] as String
+        
+        let neighborhoods = locationDict["neighborhoods"] as [String]
+        let neighborhoodString = neighborhoods[0]
+        
+        cell.addressLabel.text = "\(address[0]), \(neighborhoodString)"
+        
+        // categories
+        let categoriesData = cellData["categories"] as [[String]]
+        var categoriesString: String = ""
+        for categoryData in categoriesData {
+            if (categoriesString != "") {
+                categoriesString += ", "
+            }
+            categoriesString += categoryData[0]
+        }
+        
+        // println(categoriesString)
+        
+        cell.categoriesLabel.text = categoriesString
         
         return cell
     }

@@ -35,6 +35,19 @@ class FilterViewController: UITableViewController {
         return 3;
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Sort By"
+        case 1:
+            return "Radius"
+        case 2:
+            return "Deals"
+        default:
+            return ""
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let expanded = isExpanded[section] {
             switch section {

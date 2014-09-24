@@ -15,6 +15,7 @@ class YelpCell: UITableViewCell {
     @IBOutlet weak var starImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var categoriesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
